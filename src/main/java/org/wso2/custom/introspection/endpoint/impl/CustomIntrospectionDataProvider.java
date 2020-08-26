@@ -1,4 +1,4 @@
-package org.sdg.custom.introspection.endpoint.impl;
+package org.wso2.custom.introspection.endpoint.impl;
 
 import org.wso2.carbon.identity.core.handler.AbstractIdentityHandler;
 import org.wso2.carbon.identity.oauth2.IdentityOAuth2Exception;
