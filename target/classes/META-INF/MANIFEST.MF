@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: custom-introspection-endpoint
+Built-By: gangani
+Bundle-ManifestVersion: 2
+Bnd-LastModified: 1598417384527
+Import-Package: org.apache.commons.logging;version="[1.2,2.0)",org.osg
+ i.framework;version="[1.7.0,2.0.0)",org.sdg.custom.introspection.endp
+ oint.impl,org.wso2.carbon.identity.core.handler;version="[5.14.67,6.0
+ .0)",org.wso2.carbon.identity.oauth2;version="[6.2.18,7.0.0)",org.wso
+ 2.carbon.identity.oauth2.dto;version="[6.2.18,7.0.0)"
+Service-Component: OSGI-INF/org.sdg.custom.introspection.endpoint.inte
+ rnal.ServiceComponent.xml
+Axis2Module: custom-introspection-endpoint-1.0.0
+DynamicImport-Package: *
+Tool: Bnd-1.43.0
+Export-Package: org.sdg.custom.introspection.endpoint.impl;uses:="org.
+ wso2.carbon.identity.core.handler,org.wso2.carbon.identity.oauth2,org
+ .wso2.carbon.identity.oauth2.dto";version="1.0.0"
+Bundle-Version: 1.0.0
+Bundle-Name: custom-introspection-endpoint
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.8.0_265
+
