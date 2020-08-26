@@ -32,12 +32,12 @@ public class CustomIntrospectionDataProvider extends AbstractIdentityHandler imp
                     false);
 
             if (accessTokenDO.getTokenType().equals(APPLICATION)) {
-                introspectionData.put(ISS, oAuth2IntrospectionResponseDTO.getClientId());
+                introspectionData.put(SUB, oAuth2IntrospectionResponseDTO.getClientId());
             } else {
-                introspectionData.put(ISS, oAuth2IntrospectionResponseDTO.getUsername());
+                introspectionData.put(SUB, oAuth2IntrospectionResponseDTO.getUsername());
             }
 
-            introspectionData.put(SUB, oAuth2IntrospectionResponseDTO.getUsername());
+            introspectionData.put(ISS, oAuth2IntrospectionResponseDTO.getUsername());
             // DummyValue
             introspectionData.put(DUMMY_VALUE, "xxx-xxx-xxx");
         }
