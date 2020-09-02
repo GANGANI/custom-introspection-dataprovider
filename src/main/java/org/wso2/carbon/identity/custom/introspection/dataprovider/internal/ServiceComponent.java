@@ -1,14 +1,14 @@
-package org.wso2.custom.introspection.endpoint.internal;
+package org.wso2.carbon.identity.custom.introspection.dataprovider.internal;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.wso2.custom.introspection.endpoint.impl.CustomIntrospectionDataProvider;
+import org.wso2.carbon.identity.custom.introspection.dataprovider.CustomIntrospectionDataProvider;
 import org.wso2.carbon.identity.oauth2.IntrospectionDataProvider;
 
-@Component(name = "org.sdg.custom.introspection.endpoint.internal.ServiceComponent",
+@Component(name = "org.wso2.carbon.identity.custom.introspection.dataprovider.internal.ServiceComponent",
         immediate = true)
 public class ServiceComponent {
 

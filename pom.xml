@@ -4,87 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.sdg.custom.introspection</groupId>
-    <artifactId>custom-introspection-endpoint</artifactId>
+    <groupId>org.wso2.carbon.identity.custom.introspection.dataprovider</groupId>
+    <artifactId>custom-introspection-dataprovider</artifactId>
     <version>1.0.0</version>
     <packaging>bundle</packaging>
 
-    <name>Sample - Custom Introspection Endpoint</name>
-    <repositories>
-        <repository>
-            <id>wso2-nexus</id>
-            <name>WSO2 internal Repository</name>
-            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-        <repository>
-            <id>wso2.releases</id>
-            <name>WSO2 internal Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-        <repository>
-            <id>wso2.snapshots</id>
-            <name>Apache Snapshot Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>wso2.releases</id>
-            <name>WSO2 internal Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </pluginRepository>
-        <pluginRepository>
-            <id>wso2.snapshots</id>
-            <name>WSO2 Snapshot Repository</name>
-            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
-        <pluginRepository>
-            <id>wso2-nexus</id>
-            <name>WSO2 internal Repository</name>
-            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
+    <name>Sample - Custom Introspection Data Provider</name>
 
     <dependencies>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
-            <version>1.2</version>
+            <version>${commons-logging.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
@@ -106,8 +37,9 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <inherited>true</inherited>
                 <configuration>
                     <encoding>UTF-8</encoding>
@@ -119,7 +51,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-scr-plugin</artifactId>
-                <version>1.24.0</version>
+                <version>${maven.scr.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>generate-scr-scrdescriptor</id>
@@ -132,7 +64,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.3.5</version>
+                <version>${maven.bundle.plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -142,30 +74,30 @@
                         <Import-Package>
                             org.apache.commons.logging;version="${commons-logging.osgi.version.range}",
                             org.osgi.framework;version="${osgi.framework.imp.pkg.version.range}",
-                            org.sdg.custom.introspection.endpoint.impl,
+                            org.wso2.carbon.identity.custom.introspection.dataprovider,
                             org.wso2.carbon.identity.core.handler;version="${carbon.identity.framework.imp.pkg.version.range}",
                             org.wso2.carbon.identity.oauth2;version="${org.wso2.carbon.identity.oauth.import.version.range}",
                             org.wso2.carbon.identity.oauth2.dto;version="${org.wso2.carbon.identity.oauth.import.version.range}"
                         </Import-Package>
                         <Private-Package>
-                            org.sdg.custom.introspection.endpoint.internal
+                            org.wso2.carbon.identity.custom.introspection.dataprovider.internal
                         </Private-Package>
                         <Export-Package>
-                            !org.sdg.custom.introspection.endpoint.internal,
-                            org.sdg.custom.introspection.endpoint.*,
+                            !org.wso2.carbon.identity.custom.introspection.dataprovider.internal,
+                            org.wso2.carbon.identity.custom.introspection.dataprovider.*,
                             version="1.0.0"
                         </Export-Package>
-                        <DynamicImport-Package>*</DynamicImport-Package>
                     </instructions>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
     <properties>
 
-        <commons-collections.version>3.2.2.wso2v1</commons-collections.version>
+        <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
+        <maven.scr.plugin.version>1.24.0</maven.scr.plugin.version>
+        <maven.bundle.plugin.version>2.3.5</maven.bundle.plugin.version>
 
         <!-- Carbon Identity Framework version -->
         <carbon.identity.framework.version>5.14.67</carbon.identity.framework.version>
@@ -177,6 +109,8 @@
         <org.wso2.carbon.identity.oauth.import.version.range>[6.2.18, 7.0.0)</org.wso2.carbon.identity.oauth.import.version.range>
 
         <!-- Commons -->
+        <commons-collections.version>3.2.2.wso2v1</commons-collections.version>
+        <commons-logging.version>1.2</commons-logging.version>
         <commons-logging.osgi.version.range>[1.2,2.0)</commons-logging.osgi.version.range>
 
         <!-- OSGi/Equinox dependency version -->
